@@ -1,8 +1,11 @@
+require('dotenv').config();
+
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
+const client = require('./db/Client.js');
 const indexRouter = require('./routes/index');
 const productsRouter = require('./routes/products');
 
@@ -15,6 +18,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/products', productsRouter);
+app.use('/prodotti', productsRouter);
 
 module.exports = app;
