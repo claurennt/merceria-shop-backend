@@ -1,0 +1,17 @@
+POST http://localhost:3000/prodotti/donna/pigiami
+Content-Type: application/json
+
+{  "pic_src":"./public/images/vestaglia.jpg",
+    "name":"vestaglia donna ",
+    "category":"vestaglia",
+    "brand":"Andra",
+    "material":"Raso",
+    "color":"Blu",
+    "size":["S","M","L","XL","XXL"],
+    "price": 45.00,
+    "description": "Pigiama di raso di Andra - blu"
+}
+
+###
+GET http://localhost:3000/prodotti/donna/pigiami
+Content-Type: application/json
