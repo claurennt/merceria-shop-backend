@@ -1,9 +1,13 @@
 const express = require('express');
-const router = express.Router();
+const productsRouter = express.Router();
+const insert_new_product = require('../controllers/post_controllers');
+const {
+  get_all_products_by_category,
+} = require('../controllers/get_controllers');
 
-/* GET products listing. */
-router.get('/', function (req, res, next) {
-  res.send('respond with a resource');
-});
+productsRouter
+  .route('/donna/:categoria')
+  .post(insert_new_product)
+  .get(get_all_products_by_category);
 
-module.exports = router;
+module.exports = productsRouter;
