@@ -1,20 +1,13 @@
-const {
-  Calze,
-  Canottiere,
-  Intimo,
-  Pigiami,
-  Maglie,
-  CamicieDaNotte,
-} = require('../model/productsModel');
+const ProductSchema = require('../schema/ProductSchema');
+const createModel = require('../utils/createModel');
 
-const capitalizeFirstLetter = require('../utils/capitalizeFirstLetter');
-
-//controller to insert a new document in the collection, retrieved by the category key of the body
+//controller to insert a new document in the collection
 const insert_new_product = async (req, res) => {
   const {
     pic_src,
     name,
     category,
+    gender,
     brand,
     material,
     color,
@@ -23,14 +16,14 @@ const insert_new_product = async (req, res) => {
     description,
   } = req.body;
 
-  //uppercase first letter of category key
-  const prodModel = capitalizeFirstLetter(category);
-  console.log(typeof prodModel);
   try {
-    const newProduct = await Pigiami.create({
+    /*create new model,i.e. collection first, 
+    and new document in the collection with the data passed in the req.body*/
+    const newProduct = await createModel(category, ProductSchema).create({
       pic_src,
       name,
       category,
+      gender,
       brand,
       material,
       color,
@@ -38,6 +31,7 @@ const insert_new_product = async (req, res) => {
       price,
       description,
     });
+    //send back the new added document
     res.json(newProduct);
   } catch (err) {
     res.status(500).send({ message: err.message });

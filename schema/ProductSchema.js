@@ -12,6 +12,7 @@ const ProductSchema = new Schema({
     required: true,
   },
   category: { type: String, uppercase: true, required: true },
+  gender: { type: String, required: true },
   brand: { type: String, required: true },
   material: { type: String, required: true },
   color: { type: String, required: true },
@@ -21,20 +22,17 @@ const ProductSchema = new Schema({
   stock: { type: Number },
 });
 
-ProductSchema.add({ category: { type: String, required: true } });
+//####hard-coded models###
+// const Calze = mongoose.model('Calze', ProductSchema);
 
-// the models is built upon the schema we just defined
+// const Canottiere = mongoose.model('Canottiere', ProductSchema);
 
-const Calze = mongoose.model('Calze', ProductSchema);
+// const Intimo = mongoose.model('Intimo', ProductSchema);
 
-const Canottiere = mongoose.model('Canottiere', ProductSchema);
+// const Pigiami = mongoose.model('Pigiami', ProductSchema);
 
-const Intimo = mongoose.model('Intimo', ProductSchema);
+// const Maglie = mongoose.model('Maglie', ProductSchema);
 
-const Pigiami = mongoose.model('Pigiami', ProductSchema);
+// const CamicieDaNotte = mongoose.model('CamicieDaNotte', ProductSchema);
 
-const Maglie = mongoose.model('Maglie', ProductSchema);
-
-const CamicieDaNotte = mongoose.model('CamicieDaNotte', ProductSchema);
-
-module.exports = { Calze, Canottiere, Intimo, Pigiami, Maglie, CamicieDaNotte };
+module.exports = ProductSchema;
