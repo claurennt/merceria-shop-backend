@@ -5,8 +5,9 @@ const {
   get_all_products_by_category,
 } = require('../controllers/get_controllers');
 
+//
 productsRouter
-  .route('/donna/:categoria')
+  .route('/:genere/:categoria')
   .post(insert_new_product)
   .get(get_all_products_by_category);
 

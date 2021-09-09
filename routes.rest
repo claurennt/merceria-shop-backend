@@ -1,9 +1,10 @@
-POST http://localhost:3000/prodotti/donna/pigiami
+POST http://localhost:3000/prodotti/uomo/vestaglie
 Content-Type: application/json
 
 {  "pic_src":"./public/images/vestaglia.jpg",
-    "name":"vestaglia donna ",
-    "category":"vestaglia",
+    "name":"v",
+    "category":"ciao",
+    "gender": "uomo",
     "brand":"Andra",
     "material":"Raso",
     "color":"Blu",
@@ -13,5 +14,5 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:3000/prodotti/donna/pigiami
+GET http://localhost:3000/prodotti/uomo/vestaglie
 Content-Type: application/json
