@@ -1,5 +1,6 @@
 const ProductSchema = require('../schema/ProductSchema');
 const createModel = require('../utils/createModel');
+const errorHandler = require('../middlewares/errorHandler');
 
 //controller to insert a new document in the collection
 const insert_new_product = async (req, res) => {
@@ -34,7 +35,7 @@ const insert_new_product = async (req, res) => {
     //send back the new added document
     res.json(newProduct);
   } catch (err) {
-    res.status(500).send({ message: err.message });
+    next(err);
   }
 };
 
