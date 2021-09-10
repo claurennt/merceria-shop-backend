@@ -2,7 +2,7 @@ const ProductSchema = require('../schema/ProductSchema');
 const createModel = require('../utils/createModel');
 const errorHandler = require('../middlewares/errorHandler');
 
-const get_all_products_by_category = async (req, res) => {
+const get_all_products_by_category = async (req, res, next) => {
   //retrieve the param from the url for the query filtering
   const { categoria, genere } = req.params;
 
@@ -22,7 +22,7 @@ const get_all_products_by_category = async (req, res) => {
   }
 };
 
-const get_one_product_by_id = async (req, res) => {
+const get_one_product_by_id = async (req, res, next) => {
   const { genere, categoria, id } = req.params;
 
   //create the model out of the category and the imported schema
