@@ -3,7 +3,7 @@ const createModel = require('../utils/createModel');
 const errorHandler = require('../middlewares/errorHandler');
 
 //controller to insert a new document in the collection
-const insert_new_product = async (req, res) => {
+const insert_new_product = async (req, res, next) => {
   const {
     pic_src,
     name,
