@@ -1,16 +1,20 @@
-const ProductSchema = require('../schema/ProductSchema');
-const createModel = require('../utils/createModel');
+const collections = require('../model/ProductsModel');
+const capitalizeFirstLetter = require('../utils/capitalizeFirstLetter');
+
 const errorHandler = require('../middlewares/errorHandler');
 
 const delete_product_by_id = async (req, res, next) => {
   const { id, categoria } = req.params;
 
-  //create model out of category passed in the url and imported schema
-  const Product = createModel(categoria, ProductSchema);
-
   try {
+    //capitalize the first letter of the category for the exact matching of the computer property
+    categoria = capitalizeFirstLetter(categoria);
+
+    //create the collections based on the computed property of the collection object matching the url param
+    const Collection = collections[categoria];
+
     //retrieve deletedCount key from the result of the deleteOne method
-    const { deletedCount } = await Product.deleteOne({
+    const { deletedCount } = await Collection.deleteOne({
       _id: id,
       category: categoria,
     });
