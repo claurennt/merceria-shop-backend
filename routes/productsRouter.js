@@ -7,7 +7,10 @@ const {
   get_all_products_of_collection_by_gender,
   get_one_product_by_id,
 } = require('../controllers/get_controllers');
-const delete_product_by_id = require('../controllers/delete_controllers');
+const {
+  delete_product_by_id,
+  delete_multiple_products,
+} = require('../controllers/delete_controllers');
 
 //routes
 productsRouter
@@ -16,7 +19,8 @@ productsRouter
     '/:genere(donna|uomo|kids)/:categoria(Maglie|Intimo|Canottiere|Vestaglie|Pigiami|Calze)'
   )
   .post(insert_new_product)
-  .get(get_all_products_of_collection_by_gender);
+  .get(get_all_products_of_collection_by_gender)
+  .delete(delete_multiple_products);
 
 productsRouter
   .route(
