@@ -1,8 +1,6 @@
 const collections = require('../model/ProductsModel');
 const capitalizeFirstLetter = require('../utils/capitalizeFirstLetter');
 
-const errorHandler = require('../middlewares/errorHandler');
-
 const delete_product_by_id = async (req, res, next) => {
   const { id, categoria } = req.params;
 
