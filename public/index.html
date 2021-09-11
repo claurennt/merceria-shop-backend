@@ -5,7 +5,37 @@
   </head>
 
   <body>
-    <h1>Express</h1>
-    <p>Welcome to Express</p>
+    <h1>Merceria L'Intimo di Paola API</h1>
+    <ul>
+      <h3>Routes:</h3>
+      <li>
+        <p>
+          <strong>
+            /prodotti/{genere}(donna|uomo|kids)/{categoria}(Maglie|Intimo|Canottiere|Vestaglie|Pigiami|Calze)
+          </strong>
+        </p>
+
+        <p>GET Request = Get all products by gender and type</p>
+        <p>
+          POST Request = Post new product with following data in the body of the
+          request: pic_src, name, category, gender, brand, material, color,
+          size, price, description.
+        </p>
+      </li>
+      <li>
+        <strong>
+          /prodotti/{genere}(donna|uomo|kids)/{categoria}(Maglie|Intimo|Canottiere|Vestaglie|Pigiami|Calze)/{id}
+        </strong>
+
+        <p>GET Request = Get one product by gender,type and id</p>
+      </li>
+      <li>
+        <p>
+          <strong> /prodotti/{id} </strong>
+        </p>
+
+        <p>DELETE Request = Delete one product by its id</p>
+      </li>
+    </ul>
   </body>
 </html>
