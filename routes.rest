@@ -1,5 +1,5 @@
 
-POST http://localhost:3000/prodotti/donna/vestaglie
+POST http://localhost:3000/prodotti/donna/vestagli
 Content-Type: application/json
 
 {  "pic_src":"./public/images/vestaglia.jpg",
@@ -17,7 +17,3 @@ Content-Type: application/json
 ###
 DELETE http://localhost:3000/prodotti/donna/vestaglie
 Content-Type: application/json
-
-{  
-    ["cia"] "./public/images/vestaglia."
-}

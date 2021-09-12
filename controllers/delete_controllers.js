@@ -33,7 +33,7 @@ const delete_product_by_id = async (req, res, next) => {
 //function to delete more than one product
 const delete_multiple_products = async (req, res, next) => {
   let { genere, categoria } = req.params;
-  console.log(req.query);
+
   const { condition } = req.body;
   try {
     //capitalize the first letter of the category for the exact matching of the computer property
@@ -53,14 +53,7 @@ const delete_multiple_products = async (req, res, next) => {
           `You have successfully deleted all the items (total number ${deletedCount}) from ${categoria} collection`
         );
     }
-    // const { key, value } = condition;
-    // console.log(key, value);
-    // //if the condition in the body of the request is invalid we notify the user
-    // if (!key || !value) {
-    //   return res
-    //     .status(404)
-    //     .send('Bad request: please provide a valid key:value pair to proceed');
-    // }
+
     /*if the condition is valid we proceed to delete the items of the gender passed 
     in the url matching a certain condition*/
     if (condition) {
