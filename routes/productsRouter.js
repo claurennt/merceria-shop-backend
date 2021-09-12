@@ -16,7 +16,7 @@ const {
 productsRouter
   .route(
     //use path-to-regexp module to limit the params
-    '/:genere(donna|uomo|kids)/:categoria(Maglie|Intimo|Canottiere|Vestaglie|Pigiami|Calze)'
+    '/:genere(donna|uomo|kids)/:categoria(maglie|intimo|canottiere|vestaglie|pigiami|calze)'
   )
   .post(insert_new_product)
   .get(get_all_products_of_collection_by_gender)
@@ -25,10 +25,9 @@ productsRouter
 productsRouter
   .route(
     //use path-to-regexp module to limit the params
-    '/:genere(donna|uomo|kids)/:categoria(Maglie|Intimo|Canottiere|Vestaglie|Pigiami|Calze)/:id'
+    '/:genere(donna|uomo|kids)/:categoria(maglie|intimo|canottiere|vestaglie|pigiami|calze)/:id'
   )
-  .get(get_one_product_by_id);
-
-productsRouter.route('/:id').delete(delete_product_by_id);
+  .get(get_one_product_by_id)
+  .delete(delete_product_by_id);
 
 module.exports = productsRouter;

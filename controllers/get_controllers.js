@@ -1,5 +1,7 @@
 const collections = require('../model/ProductsModel');
+const defineCollection = require('../utils/defineCollection');
 
+//list all products of a collection by gender
 const get_all_products_of_collection_by_gender = async (req, res, next) => {
   //retrieve the param from the url for the query filtering
   const { genere, categoria } = req.params;
@@ -20,6 +22,7 @@ const get_all_products_of_collection_by_gender = async (req, res, next) => {
   }
 };
 
+//get one product by category, id and gender
 const get_one_product_by_id = async (req, res, next) => {
   const { genere, categoria, id } = req.params;
 

@@ -15,7 +15,7 @@ const ProductSchema = new Schema({
     type: String,
 
     required: true,
-    enum: ['Calze, Intimo', 'Vestaglie', 'Pigiami', 'Maglie', 'Canottiere'],
+    enum: ['calze, intimo', 'vestaglie', 'pigiami', 'maglie', 'canottiere'],
     message: '{VALUE} is not a supported category.',
   },
   gender: { type: String, required: true },

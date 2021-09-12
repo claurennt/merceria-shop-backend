@@ -1,5 +1,5 @@
 
-POST http://localhost:3000/prodotti/donna/vestagli
+POST http://localhost:3000/prodotti/donna/vestaglie
 Content-Type: application/json
 
 {  "pic_src":"./public/images/vestaglia.jpg",
@@ -15,5 +15,18 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:3000/prodotti/donna/vestaglie
+GET http://localhost:3000/prodotti/donna/vestaglie
+Content-Type: application/json
+
+
+###
+GET http://localhost:3000/prodotti/donna/vestaglie/613dce950d2b2b6ab7f0b2e9
+Content-Type: application/json
+
+###
+DELETE http://localhost:3000/prodotti/
+Content-Type: application/json
+
+###
+DELETE http://localhost:3000/prodotti/donna/vestaglie/613dcee80d2b2b6ab7f0b2ed
 Content-Type: application/json

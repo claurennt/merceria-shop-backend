@@ -32,6 +32,7 @@ const delete_multiple_products = async (req, res, next) => {
   const { genere, categoria } = req.params;
 
   const { condition } = req.body;
+
   try {
     //define the collection we are using based on the url param
     const Collection = defineCollection(categoria, collections);
@@ -41,11 +42,17 @@ const delete_multiple_products = async (req, res, next) => {
       const { deletedCount } = await Collection.deleteMany({
         gender: genere,
       });
-      return res
-        .status(200)
-        .send(
-          `You have successfully deleted all the items (total number ${deletedCount}) from ${categoria} collection`
-        );
+      return !deletedCount
+        ? res
+            .status(404)
+            .send(
+              `No items have been deleted as ${categoria}'s collection was already empty.`
+            )
+        : res
+            .status(200)
+            .send(
+              `You have successfully deleted all the items (total number ${deletedCount}) from ${categoria} collection`
+            );
     }
 
     /*if the condition is valid we proceed to delete the items of the gender passed 
