@@ -1,16 +1,13 @@
 const collections = require('../model/ProductsModel');
-const capitalizeFirstLetter = require('../utils/capitalizeFirstLetter');
+const defineCollection = require('../utils/defineCollection');
 
 //function to delete only one product
 const delete_product_by_id = async (req, res, next) => {
   const { id, categoria } = req.params;
 
   try {
-    //capitalize the first letter of the category for the exact matching of the computer property
-    categoria = capitalizeFirstLetter(categoria);
-
-    //create the collections based on the computed property of the collection object matching the url param
-    const Collection = collections[categoria];
+    //define the collection we are using based on the url param
+    const Collection = defineCollection(categoria, collections);
 
     //retrieve deletedCount key from the result of the deleteOne method
     const { deletedCount } = await Collection.deleteOne({
@@ -32,15 +29,12 @@ const delete_product_by_id = async (req, res, next) => {
 
 //function to delete more than one product
 const delete_multiple_products = async (req, res, next) => {
-  let { genere, categoria } = req.params;
+  const { genere, categoria } = req.params;
 
   const { condition } = req.body;
   try {
-    //capitalize the first letter of the category for the exact matching of the computer property
-    categoria = capitalizeFirstLetter(categoria);
-
-    //create the collections based on the computed property of the collection object matching the url param
-    const Collection = collections[categoria];
+    //define the collection we are using based on the url param
+    const Collection = defineCollection(categoria, collections);
 
     if (!condition) {
       //if no condition as filter all items from the gender & cetegory passed in the url get deleted

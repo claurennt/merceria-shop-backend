@@ -1,9 +1,9 @@
 const collections = require('../model/ProductsModel');
-const capitalizeFirstLetter = require('../utils/capitalizeFirstLetter');
+const defineCollection = require('../utils/defineCollection');
 
 //controller to insert a new document in the collection
 const insert_new_product = async (req, res, next) => {
-  let {
+  const {
     pic_src,
     name,
     category,
@@ -17,11 +17,8 @@ const insert_new_product = async (req, res, next) => {
   } = req.body;
 
   try {
-    //capitalize the first letter of the category for the exact matching of the computer property
-    category = capitalizeFirstLetter(category);
-
-    //create the collections based on the computed property of the collection object matching the url param
-    const Collection = collections[category];
+    //define the collection we are using based on the url param
+    const Collection = defineCollection(category, collections);
 
     const newProduct = await Collection.create({
       pic_src,
