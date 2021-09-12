@@ -1,5 +1,5 @@
 require('dotenv').config();
-
+const errorHandler = require('./middlewares/errorHandler');
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
@@ -7,7 +7,7 @@ const logger = require('morgan');
 
 const client = require('./db/Client.js');
 const indexRouter = require('./routes/index');
-const productsRouter = require('./routes/products');
+const productsRouter = require('./routes/productsRouter');
 
 const app = express();
 
@@ -23,5 +23,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/prodotti', productsRouter);
+app.use(errorHandler);
 
 module.exports = app;
