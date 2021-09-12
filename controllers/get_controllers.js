@@ -40,8 +40,15 @@ const get_one_product_by_id = async (req, res, next) => {
       category: categoria,
       _id: id,
     });
-
-    res.json(item);
+    //send an error if no item matches the params
+    return !item
+      ? res
+          .status(404)
+          .send(
+            `We could not find any items matching gender: ${genere}, categoria:${categoria} and id:${id}`
+          )
+      : //else send back the found item
+        res.json(item);
   } catch (err) {
     next(err);
   }
