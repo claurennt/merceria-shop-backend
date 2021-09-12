@@ -1,11 +1,11 @@
 
-POST http://localhost:3000/prodotti/donna/maglie
+POST http://localhost:3000/prodotti/donna/vestagli
 Content-Type: application/json
 
 {  "pic_src":"./public/images/vestaglia.jpg",
     "name":"v4",
-    "category":"maglie",
-    "gender": "uomo",
+    "category":"vestaglie",
+    "gender": "donna",
     "brand":"Andra",
     "material":"Raso",
     "color":"Blu",
@@ -15,5 +15,5 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:3000/prodotti/donna/vestaglie
+DELETE http://localhost:3000/prodotti/donna/vestaglie
 Content-Type: application/json
