@@ -1,17 +1,13 @@
 const collections = require('../model/ProductsModel');
-const capitalizeFirstLetter = require('../utils/capitalizeFirstLetter');
 
 const get_all_products_of_collection_by_gender = async (req, res, next) => {
   //retrieve the param from the url for the query filtering
-  let { genere, categoria } = req.params;
-
-  //capitalize the first letter of the category for the exact matching of the computer property
-  categoria = capitalizeFirstLetter(categoria);
-
-  //create the collections based on the computed property of the collection object matching the url param
-  const Collection = collections[categoria];
+  const { genere, categoria } = req.params;
 
   try {
+    //define the collection we are using based on the url param
+    const Collection = defineCollection(categoria, collections);
+
     //filter the products of the collection that have the category and the gender passed in the url
     const products = await Collection.find({
       gender: genere,
@@ -25,15 +21,12 @@ const get_all_products_of_collection_by_gender = async (req, res, next) => {
 };
 
 const get_one_product_by_id = async (req, res, next) => {
-  let { genere, categoria, id } = req.params;
+  const { genere, categoria, id } = req.params;
 
   try {
-    //capitalize the first letter of the category for the exact matching of the computer property
-    categoria = capitalizeFirstLetter(categoria);
+    //define the collection we are using based on the url param
+    const Collection = defineCollection(categoria, collections);
 
-    //create the collections based on the computed property of the collection object matching the url param
-    const Collection = collections[categoria];
-    console.log(Collection);
     /*retrieve the item of a specific collection and gender by its id */
     const item = await Collection.findOne({
       gender: genere,
