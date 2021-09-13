@@ -42,13 +42,15 @@ const delete_multiple_products = async (req, res, next) => {
       const { deletedCount } = await Collection.deleteMany({
         gender: genere,
       });
+      //if deletedCount is falsey send an NotFound error message
       return !deletedCount
         ? res
             .status(404)
             .send(
               `No items have been deleted as ${categoria}'s collection was already empty.`
             )
-        : res
+        : //else send a success message
+          res
             .status(200)
             .send(
               `You have successfully deleted all the items (total number ${deletedCount}) from ${categoria} collection`
@@ -62,11 +64,13 @@ const delete_multiple_products = async (req, res, next) => {
         [key]: value,
       });
 
+      //if deletedCount is falsey send an NotFound error message
       return !deletedCount
         ? res
             .status(404)
             .send('We could not find any items matching your filter')
-        : res
+        : //else send a success message
+          res
             .status(200)
             .send(
               `You have successfully deleted ${deletedCount} items from ${categoria} collection whose key ${key} matche ${value}`

@@ -16,6 +16,26 @@ const insert_new_product = async (req, res, next) => {
     description,
   } = req.body;
 
+  if (
+    !pic_src ||
+    !name ||
+    !category ||
+    !gender ||
+    !brand ||
+    !material ||
+    !color ||
+    size ||
+    !price ||
+    !description
+  )
+    //if the req.body has missing values notify the user and exit
+    return res
+      .status(404)
+      .send(
+        'Bad Request: please provide values for the all the following keys: pic_src, name, category, gender, brand, material, color, size, price, description.'
+      );
+
+  //else create new item
   try {
     //define the collection we are using based on the url param
     const Collection = defineCollection(category, collections);
