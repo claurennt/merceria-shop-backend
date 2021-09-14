@@ -12,7 +12,6 @@ const delete_product_by_id = async (req, res, next) => {
     //retrieve deletedCount key from the result of the deleteOne method
     const { deletedCount } = await Collection.deleteOne({
       _id: id,
-      category: categoria,
     });
 
     //if deletedCount is falsey send an NotFound error message

@@ -1,9 +1,10 @@
 
-POST http://localhost:3000/prodotti/donna/vestaglie
+PUT http://localhost:3000/prodotti/donna/vestaglie/613dcf0f0924d663594ee4fa
 Content-Type: application/json
 
-{  "pic_src":"./public/images/vestaglia.jpg",
-    "name":"v4",
+{  
+    "pic_src":"./public/images/vestaglia2.jpg",
+    "name":"v4sss",
     "category":"vestaglie",
     "gender": "donna",
     "brand":"Andra",
@@ -28,5 +29,12 @@ DELETE http://localhost:3000/prodotti/
 Content-Type: application/json
 
 ###
-DELETE http://localhost:3000/prodotti/donna/vestaglie/613dcee80d2b2b6ab7f0b2ed
+DELETE http://localhost:3000/prodotti/donna/vestaglie/613dce950d2b2b6ab7f0b2e9
 Content-Type: application/json
+
+PATCH http://localhost:3000/prodotti/vestaglie/613dcf110924d663594ee4fc
+Content-Type: application/json
+
+{
+    "description": "test fn"
+}

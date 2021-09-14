@@ -24,7 +24,7 @@ const insert_new_product = async (req, res, next) => {
     !brand ||
     !material ||
     !color ||
-    size ||
+    !size ||
     !price ||
     !description
   )
@@ -35,22 +35,13 @@ const insert_new_product = async (req, res, next) => {
         'Bad Request: please provide values for the all the following keys: pic_src, name, category, gender, brand, material, color, size, price, description.'
       );
 
-  //else create new item
   try {
     //define the collection we are using based on the url param
     const Collection = defineCollection(category, collections);
 
+    //create the new product document in the collection with the req.body data
     const newProduct = await Collection.create({
-      pic_src,
-      name,
-      category,
-      gender,
-      brand,
-      material,
-      color,
-      size,
-      price,
-      description,
+      ...req.body,
     });
     //send back the new added document
     res.json(newProduct);
