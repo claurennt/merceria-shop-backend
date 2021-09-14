@@ -24,7 +24,7 @@ const get_all_products_of_collection_by_gender = async (req, res, next) => {
 
 //get one product by category, id and gender
 const get_one_product_by_id = async (req, res, next) => {
-  const { genere, categoria, id } = req.params;
+  const { categoria, id } = req.params;
 
   try {
     //define the collection we are using based on the url param
@@ -32,8 +32,6 @@ const get_one_product_by_id = async (req, res, next) => {
 
     /*retrieve the item of a specific collection and gender by its id */
     const item = await Collection.findOne({
-      gender: genere,
-      category: categoria,
       _id: id,
     });
     //send an error if no item matches the params
@@ -41,7 +39,7 @@ const get_one_product_by_id = async (req, res, next) => {
       ? res
           .status(404)
           .send(
-            `We could not find any items matching gender: ${genere}, categoria:${categoria} and id:${id}`
+            `We could not find any items matching categoria:${categoria} and id:${id}`
           )
       : //else send back the found item
         res.json(item);

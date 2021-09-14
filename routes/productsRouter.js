@@ -11,6 +11,7 @@ const {
   delete_product_by_id,
   delete_multiple_products,
 } = require('../controllers/delete_controllers');
+const { update_product_by_id } = require('../controllers/put_controllers');
 
 //routes
 productsRouter
@@ -18,16 +19,17 @@ productsRouter
     //use path-to-regexp module to limit the params
     '/:genere(donna|uomo|kids)/:categoria(maglie|intimo|canottiere|vestaglie|pigiami|calze)'
   )
-  .post(insert_new_product)
+  .delete(delete_multiple_products)
   .get(get_all_products_of_collection_by_gender)
-  .delete(delete_multiple_products);
+  .post(insert_new_product);
 
 productsRouter
   .route(
     //use path-to-regexp module to limit the params
-    '/:genere(donna|uomo|kids)/:categoria(maglie|intimo|canottiere|vestaglie|pigiami|calze)/:id'
+    '/:categoria(maglie|intimo|canottiere|vestaglie|pigiami|calze)/:id'
   )
+  .delete(delete_product_by_id)
   .get(get_one_product_by_id)
-  .delete(delete_product_by_id);
+  .put(update_product_by_id);
 
 module.exports = productsRouter;
