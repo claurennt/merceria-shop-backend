@@ -48,7 +48,12 @@ const get_one_product_by_id = async (req, res, next) => {
   }
 };
 
+const display_upload_form = (req, res, next) => {
+  res.render('post');
+};
+
 module.exports = {
   get_all_products_of_collection_by_gender,
   get_one_product_by_id,
+  display_upload_form,
 };
