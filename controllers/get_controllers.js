@@ -34,7 +34,12 @@ const get_one_product_by_id = async (req, res, next) => {
     const item = await Collection.findOne({
       _id: id,
     });
+
+    console.log({ itemprops: item });
     //send an error if no item matches the params
+
+    const picturePath = item['pic_src'].replace(/\\/g, '/');
+    console.log;
     return !item
       ? res
           .status(404)
@@ -42,7 +47,7 @@ const get_one_product_by_id = async (req, res, next) => {
             `We could not find any items matching categoria:${categoria} and id:${id}`
           )
       : //else send back the found item
-        res.json(item);
+        res.render('test', { picturePath: picturePath });
   } catch (err) {
     next(err);
   }

@@ -1,8 +1,5 @@
 const express = require('express');
 const productsRouter = express.Router();
-const multer = require('multer');
-const multerFilter = require('../middlewares/multerFilter');
-const upload = multer({ multerFilter });
 
 //controllers imports
 const insert_new_product = require('../controllers/post_controllers');
@@ -36,7 +33,4 @@ productsRouter
   .get(get_one_product_by_id)
   .put(update_product_by_id);
 
-productsRouter.route('/aggiungi').get(display_upload_form);
-
-productsRouter.post('/aggiungi', upload.single('pic_src'), insert_new_product);
 module.exports = productsRouter;
