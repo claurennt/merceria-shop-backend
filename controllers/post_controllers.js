@@ -15,6 +15,7 @@ const insert_new_product = async (req, res, next) => {
     description,
   } = req.body;
   const { path } = req.file;
+
   console.log({ body: req.body, file: req.file });
   if (
     !name ||
