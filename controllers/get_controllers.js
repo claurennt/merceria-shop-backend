@@ -35,19 +35,17 @@ const get_one_product_by_id = async (req, res, next) => {
       _id: id,
     });
 
-    console.log({ itemprops: item });
-    //send an error if no item matches the params
-
     const picturePath = item['pic_src'].replace(/\\/g, '/');
-    console.log;
+
+    //send an error if no item matches the params
     return !item
       ? res
           .status(404)
           .send(
             `We could not find any items matching categoria:${categoria} and id:${id}`
           )
-      : //else send back the found item
-        res.render('test', { picturePath: picturePath });
+      : //else send back the found item with its picture
+        res.render('test', { picturePath: '/' + picturePath });
   } catch (err) {
     next(err);
   }
