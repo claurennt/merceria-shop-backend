@@ -1,9 +1,26 @@
 body {
-  padding: 50px;
+  padding: 30px;
   letter-spacing: 2;
   font: 1.2rem "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
+}
+
+.explanation {display:inline;}
+
+.row > *{
+  font: 0.5px;
+ 
+
+}
+.row{
+  padding:15px;
+  font-size:1rem;
+}
+
+.add-main{
+  padding: 20px;
+
 }

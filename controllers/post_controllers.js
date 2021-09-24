@@ -4,7 +4,6 @@ const defineCollection = require('../utils/defineCollection');
 //controller to insert a new document in the collection
 const insert_new_product = async (req, res, next) => {
   const {
-    pic_src,
     name,
     category,
     gender,
@@ -15,9 +14,10 @@ const insert_new_product = async (req, res, next) => {
     price,
     description,
   } = req.body;
+  const { path } = req.file;
 
+  console.log({ body: req.body, file: req.file });
   if (
-    !pic_src ||
     !name ||
     !category ||
     !gender ||
@@ -41,8 +41,18 @@ const insert_new_product = async (req, res, next) => {
 
     //create the new product document in the collection with the req.body data
     const newProduct = await Collection.create({
-      ...req.body,
+      name,
+      category,
+      gender,
+      brand,
+      material,
+      color,
+      size,
+      price,
+      description,
+      pic_src: path,
     });
+    console.log({ new: newProduct });
     //send back the new added document
     res.json(newProduct);
   } catch (err) {
