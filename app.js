@@ -21,6 +21,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//use this middleware to serve static files when the route is prefixed with /public
+app.use('/public/images/', express.static(__dirname + '/public/images'));
+
 app.use('/', indexRouter);
 app.use('/prodotti', productsRouter);
 app.use(errorHandler);
