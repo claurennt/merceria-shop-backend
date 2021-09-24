@@ -34,6 +34,9 @@ const get_one_product_by_id = async (req, res, next) => {
     const item = await Collection.findOne({
       _id: id,
     });
+
+    const picturePath = item['pic_src'].replace(/\\/g, '/');
+
     //send an error if no item matches the params
     return !item
       ? res
@@ -41,14 +44,19 @@ const get_one_product_by_id = async (req, res, next) => {
           .send(
             `We could not find any items matching categoria:${categoria} and id:${id}`
           )
-      : //else send back the found item
-        res.json(item);
+      : //else send back the found item with its picture
+        res.render('test', { picturePath: '/' + picturePath });
   } catch (err) {
     next(err);
   }
 };
 
+const display_upload_form = (req, res, next) => {
+  res.render('post');
+};
+
 module.exports = {
   get_all_products_of_collection_by_gender,
   get_one_product_by_id,
+  display_upload_form,
 };

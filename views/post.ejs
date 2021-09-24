@@ -1,0 +1,110 @@
+<html>
+  <head>
+    <title>Express</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+
+  <body class="add-main">
+    
+    <h4>Aggiungi nuovo prodotto al database</h4>
+    <form action="/aggiungi" enctype="multipart/form-data" method="post">
+      <div class="form-group">
+        <div class="row">
+          <label for="nome-prodotto">Nome del prodotto:</label>
+          <input
+            type="text"
+            placeholder="nome del prodotto"
+            name="name"
+            id="id-prodotto"
+          />
+        </div>
+        <div class="row">
+          <label for="category">Seleziona la categoria:</label>
+          <select name="category" id="category">
+            <option value="intimo">intimo</option>
+            <option value="vestaglie">vestaglie</option>
+            <option value="pigiami">pigiami</option>
+            <option value="calze">calze</option>
+            <option value="maglie">maglie</option>
+            <option value="canottiere">canottiere</option>
+          </select>
+        </div>
+        <div class="row">
+          <p class="explanation">Seleziona il genere:</p>
+          <input type="radio" id="donna" name="gender" value="donna" />
+          <label for="donna">Donna</label>
+
+          <input type="radio" id="uomo" name="gender" value="uomo" />
+          <label for="uomo">Uomo</label>
+          <input type="radio" id="kids" name="gender" value="kids" />
+          <label for="kids">Kids</label>
+        </div>
+        <div class="row">
+        <label for="colore-prodotto">Colore: </label>
+        <input
+          type="text"
+          placeholder="colore del prodotto"
+          name="color"
+          id="colore-prodotto"
+        />
+        </div>
+        <div class="row">
+        <label for="material-prodotto">Materiale: </label>
+        <input
+          type="text"
+          placeholder="materiale del prodotto"
+          name="material"
+          id="material-prodotto"
+        />
+        </div>
+        <div class="row">
+        <label for="brand-prodotto">Brand: </label>
+        <input
+          type="text"
+          placeholder="brand"
+          name="brand"
+          id="brand-prodotto"
+        />
+      </div>
+      <div class="row">
+        <p class="explanation">Seleziona taglie disponibili:</p>
+        <input type="checkbox" id="XS" name="size" value="XS" />
+        <label for="XS">XS</label>
+        <input type="checkbox" id="S" name="size" value="S" />
+        <label for="S">S</label>
+        <input type="checkbox" id="M" name="size" value="M" />
+        <label for="M">M</label>
+        <input type="checkbox" id="L" name="size" value="L" />
+        <label for="L">L</label>
+        <input type="checkbox" id="XL" name="size" value="XL" />
+        <label for="XL">XL</label>
+        <input type="checkbox" id="XXL" name="size" value="XXL" />
+        <label for="XXL">XXL</label>
+      </div>
+      <div class="row">
+        <label for="prezzo-prodotto">Prezzo: </label>
+        <input
+          type="text"
+          placeholder="prezzo"
+          name="price"
+          id="prezzo-prodotto"
+        />
+      </div>
+      <div class="row">
+        <p class="explanation">Descrizione: </p>
+        <textarea
+          name="description"
+          id="descrizione-prodotto"
+        >
+        </textarea>
+      </div>
+      <div class="row">
+        <p class="explanation">Carica foto del prodotto:</p>
+        <input type="file" class="form-control-file" name="pic_src" />
+      </div>
+      <button >Aggiungi prodotto al database</button>
+      
+    </form>
+ 
+  </body>
+</html>

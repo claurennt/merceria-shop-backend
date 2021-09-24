@@ -6,6 +6,7 @@ const insert_new_product = require('../controllers/post_controllers');
 const {
   get_all_products_of_collection_by_gender,
   get_one_product_by_id,
+  display_upload_form,
 } = require('../controllers/get_controllers');
 const {
   delete_product_by_id,
