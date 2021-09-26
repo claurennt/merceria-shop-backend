@@ -35,8 +35,8 @@ const get_one_product_by_id = async (req, res, next) => {
       _id: id,
     });
 
-    const picturePath = item['pic_src'].replace(/\\/g, '/');
-
+    // const picturePath = item['pic_src'].replace(/\\/g, '/');
+    // console.log(picturePath);
     //send an error if no item matches the params
     return !item
       ? res
@@ -45,14 +45,15 @@ const get_one_product_by_id = async (req, res, next) => {
             `We could not find any items matching categoria:${categoria} and id:${id}`
           )
       : //else send back the found item with its picture
-        res.render('test', { picturePath: '/' + picturePath });
+        res.json(item);
   } catch (err) {
     next(err);
   }
 };
 
+//display form to add a new product
 const display_upload_form = (req, res, next) => {
-  res.render('post');
+  res.render('uploadForm');
 };
 
 module.exports = {
