@@ -18,8 +18,4 @@ router.get('/', function (req, res, next) {
   res.render('index');
 });
 
-router
-  .route('/aggiungi')
-  .get(display_upload_form)
-  .post(uploadOptions, insert_new_product);
 module.exports = router;
