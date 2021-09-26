@@ -1,19 +1,4 @@
 
-POST http://localhost:3000/prodotti/donna/vestaglie/
-Content-Type: application/json
-
-{  
-    "pic_src":"./public/images/vestaglia2.jpg",
-    "name":"v4sss",
-    "category":"vestaglie",
-    "gender": "donna",
-    "brand":"Andra",
-    "material":"Raso",
-    "color":"Blu",
-    "size":["S","M","L","XL","XXL"],
-    "price": 45.00,
-    "description": "Pigiama di raso di Andra - blu"
-}
 
 ###
 GET http://localhost:3000/prodotti/donna/vestaglie
@@ -38,5 +23,6 @@ Content-Type: application/json
 
 {
     "description": "test fn",
-    "name": "test 2"
+    "ciao": "test &&&",
+    "test": "test"
 }

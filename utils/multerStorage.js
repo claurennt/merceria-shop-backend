@@ -18,5 +18,5 @@ const multerStorage = multer.diskStorage({
     cb(null, filename);
   },
 });
-// console.log({ test: multerStorage.getFilename() });
+
 module.exports = multerStorage;

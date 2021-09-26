@@ -17,21 +17,34 @@
 
         <p>GET Request = Get all products by gender and type</p>
         <p>
-          POST Request = Post new product with following data in the body of the
-          request: pic_src, name, category, gender, brand, material, color,
-          size, price, description.
+          DELETE Request = Delete multiple products: if no codition is passed,
+          all products from categoria and genere passed in the url will be
+          deleted; if there is a key:value pair condition, only products
+          matching categoria genere and key:value will be deleted
         </p>
       </li>
       <li>
         <strong>
-          /prodotti/{genere}(donna|uomo|kids)/{categoria}(maglie|intimo|canottiere|vestaglie|pigiami|calze)/{id}
+          /prodotti/{categoria}(maglie|intimo|canottiere|vestaglie|pigiami|calze)/{id}
         </strong>
 
-        <p>GET Request = Get one product by gender,type and id</p>
+        <p>GET Request = Get one product by category and id</p>
         <p>
           DELETE Request = Delete one product of a category, gender by its id
         </p>
+        <p>PUT Request = Update certain fields, or all through req.body</p>
       </li>
+      <li>
+        <strong> /prodotti/aggiungi </strong>
+
+        <p>GET Request = Displays form to upload new product to database</p>
+        <p>POST Request = Posts new product via form</p>
+      </li>
+      <p>
+        POST Request = Post new product with following data in the body of the
+        request: pic_src, name, category, gender, brand, material, color, size,
+        price, description.
+      </p>
     </ul>
   </body>
 </html>

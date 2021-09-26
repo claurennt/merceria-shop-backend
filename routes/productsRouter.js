@@ -14,15 +14,28 @@ const {
 } = require('../controllers/delete_controllers');
 const { update_product_by_id } = require('../controllers/put_controllers');
 
+//multer import and opts
+const multer = require('multer');
+const multerFilter = require('../utils/multerFilter');
+const multerStorage = require('../utils/multerStorage');
+const uploadOptions = multer({
+  fileFilter: multerFilter,
+  storage: multerStorage,
+}).single('pic_src');
+
 //routes
+productsRouter
+  .route('/aggiungi/')
+  .get(display_upload_form)
+  .post(uploadOptions, insert_new_product);
+
 productsRouter
   .route(
     //use path-to-regexp module to limit the params
     '/:genere(donna|uomo|kids)/:categoria(maglie|intimo|canottiere|vestaglie|pigiami|calze)'
   )
   .delete(delete_multiple_products)
-  .get(get_all_products_of_collection_by_gender)
-  .post(insert_new_product);
+  .get(get_all_products_of_collection_by_gender);
 
 productsRouter
   .route(
