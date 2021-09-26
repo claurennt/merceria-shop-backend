@@ -7,10 +7,19 @@
     <title>Document</title>
   </head>
   <body>
-    <h1>TEST</h1>
+    <h3>New product added to the database!</h3>
+    <h5>Overview:</h5>
+    <ul>
+      <% for (let p in newProduct ) { %> <% if
+      (p.match(/^(name|category|size|description|color|brand|material|price|gender)$/))
+      { %>
+
+      <li><%=p%> : <%=newProduct[p]%></li>
+      <% } }; %>
+    </ul>
 
     <img
-      src="<%= picturePath %>"
+      src="<%= newProduct['pic_src'] %>"
       class="rounded-bottom"
       width="180"
       height="180"
