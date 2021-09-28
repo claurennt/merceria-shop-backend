@@ -2,8 +2,8 @@ const express = require('express');
 const productsRouter = express.Router();
 
 //middlewares import
-const validateParams = require('../middlewares/paramsValidator');
-const validatorError = require('../middlewares/validatorError');
+const validateParams = require('../middlewares/validators/paramsValidator');
+const validatorError = require('../middlewares/validators/validatorError');
 //controllers imports
 const insert_new_product = require('../controllers/post_controllers');
 const {
@@ -17,20 +17,14 @@ const {
 } = require('../controllers/delete_controllers');
 const { update_product_by_id } = require('../controllers/put_controllers');
 
-//multer import and opts
-const multer = require('multer');
-const multerFilter = require('../utils/multerFilter');
-const multerStorage = require('../utils/multerStorage');
-const uploadOptions = multer({
-  fileFilter: multerFilter,
-  storage: multerStorage,
-}).single('pic_src');
+//multer import for image upload
+const multerUpload = require('../middlewares/multer/multerUpload');
 
 //routes
 productsRouter
   .route('/aggiungi/')
   .get(display_upload_form)
-  .post(uploadOptions, insert_new_product);
+  .post(multerUpload, insert_new_product);
 
 productsRouter
   .route(
