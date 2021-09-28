@@ -5,11 +5,6 @@ const { validationResult } = require('express-validator');
 
 //list all products of a collection by gender
 const get_all_products_of_collection_by_gender = async (req, res, next) => {
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return res.status(422).json({ errors: errors.array() });
-  }
-
   //retrieve the param from the url for the query filtering
   const { genere, categoria } = req.params;
 
@@ -58,7 +53,11 @@ const get_one_product_by_id = async (req, res, next) => {
 
 //display form to add a new product
 const display_upload_form = (req, res, next) => {
-  res.render('uploadForm');
+  try {
+    res.render('uploadForm');
+  } catch (err) {
+    next(err);
+  }
 };
 
 module.exports = {

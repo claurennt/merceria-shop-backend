@@ -1,9 +1,10 @@
 const express = require('express');
 const productsRouter = express.Router();
-
-//middlewares import
+const { param, check } = require('express-validator');
+//validator middlewares imports
 const validateParams = require('../middlewares/validators/paramsValidator');
-const validatorError = require('../middlewares/validators/validatorError');
+const validateError = require('../middlewares/validators/validatorError');
+
 //controllers imports
 const insert_new_product = require('../controllers/post_controllers');
 const {
@@ -32,10 +33,9 @@ productsRouter
     // '/:genere(donna|uomo|kids)/:categoria(maglie|intimo|canottiere|vestaglie|pigiami|calze)'
     '/:genere/:categoria/'
   )
-  .delete(delete_multiple_products)
+  .delete([validateParams, validateError], delete_multiple_products)
   .get(
-    validateParams(),
-    validatorError,
+    [validateParams(), validateError],
     get_all_products_of_collection_by_gender
   );
 
@@ -43,10 +43,15 @@ productsRouter
   .route(
     //use path-to-regexp module to limit the params
     // '/:categoria(maglie|intimo|canottiere|vestaglie|pigiami|calze)/:id'
-    '/:categoria/:id'
+    '/:genere/:categoria/:id'
   )
-  .delete(delete_product_by_id)
-  .get(validateParams(), validatorError, get_one_product_by_id)
-  .put(update_product_by_id);
+  .delete([validateParams(), validateError], delete_product_by_id)
+  .get(
+    validateParams(),
+    validateError,
+
+    get_one_product_by_id
+  )
+  .put([validateParams(), validateError], update_product_by_id);
 
 module.exports = productsRouter;

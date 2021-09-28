@@ -14,6 +14,10 @@ const validateParams = () => {
       .exists()
       .isIn(['uomo', 'donna', 'kids'])
       .withMessage('Param "genere" must be one of: donna|uomo|kids'),
+
+    param('id')
+      .exists()
+      .withMessage('Param "id"(ObjectId of product) is required'),
   ];
 };
 module.exports = validateParams;
