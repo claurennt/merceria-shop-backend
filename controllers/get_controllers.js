@@ -39,11 +39,7 @@ const get_one_product_by_id = async (req, res, next) => {
 
     //send an error if no item matches the params
     return !item
-      ? res
-          .status(404)
-          .send(
-            `We could not find any items matching categoria:${categoria} and id:${id}`
-          )
+      ? res.status(404).send(`We could not find any items matching id:${id}`)
       : //else send back the found item with its picture
         res.json(item);
   } catch (err) {

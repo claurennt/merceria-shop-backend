@@ -1,10 +1,11 @@
 const collections = require('../model/ProductsModel');
 const defineCollection = require('../utils/defineCollection');
+const objHasEmptyKey = require('../utils/objHasEmptyKey');
 
 //controller to insert a new document in the collection
 const insert_new_product = async (req, res, next) => {
   //if the req.body has missing values notify the user and exit
-  if (Object.entries(req.body).length < 9 || !req.file) {
+  if (objHasEmptyKey(req.body) || !req.file) {
     return res
       .status(404)
       .send(
