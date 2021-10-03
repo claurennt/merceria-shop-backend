@@ -1,9 +1,14 @@
 const express = require('express');
 const productsRouter = express.Router();
 
-//middlewares import
-const validateParams = require('../middlewares/validators/paramsValidator');
-const validatorError = require('../middlewares/validators/validatorError');
+//param validator middlewares imports
+const {
+  validateCategory,
+  validateGender,
+  validateId,
+} = require('../middlewares/validators/validators');
+const validateError = require('../middlewares/validators/validatorError');
+
 //controllers imports
 const insert_new_product = require('../controllers/post_controllers');
 const {
@@ -26,27 +31,27 @@ productsRouter
   .get(display_upload_form)
   .post(multerUpload, insert_new_product);
 
+//route specific validation chain, for route with params genere and categoria
+const paramsValidationChain = [validateGender, validateCategory, validateError];
 productsRouter
   .route(
     //use path-to-regexp module to limit the params
     // '/:genere(donna|uomo|kids)/:categoria(maglie|intimo|canottiere|vestaglie|pigiami|calze)'
     '/:genere/:categoria/'
   )
-  .delete(delete_multiple_products)
-  .get(
-    validateParams(),
-    validatorError,
-    get_all_products_of_collection_by_gender
-  );
+  .delete(paramsValidationChain, delete_multiple_products)
+  .get(paramsValidationChain, get_all_products_of_collection_by_gender);
 
+//route specific validation chain, for route with params genere, categoria and id
+const paramsValidationChainSpecific = [...paramsValidationChain, validateId];
 productsRouter
   .route(
     //use path-to-regexp module to limit the params
     // '/:categoria(maglie|intimo|canottiere|vestaglie|pigiami|calze)/:id'
-    '/:categoria/:id'
+    '/:genere/:categoria/:id'
   )
-  .delete(delete_product_by_id)
-  .get(validateParams(), validatorError, get_one_product_by_id)
-  .put(update_product_by_id);
+  .delete(paramsValidationChainSpecific, delete_product_by_id)
+  .get(paramsValidationChainSpecific, get_one_product_by_id)
+  .put(paramsValidationChainSpecific, update_product_by_id);
 
 module.exports = productsRouter;
