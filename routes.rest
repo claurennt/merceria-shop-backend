@@ -1,12 +1,12 @@
 
 
 ###
-GET http://localhost:3000/prodotti/donna/vestaglie
+GET http://localhost:3000/prodotti/donna/intimo
 Content-Type: application/json
 
 
 ###
-GET http://localhost:3000/prodotti/donna/vestaglie/613dce950d2b2b6ab7f0b2e9
+GET http://localhost:3000/prodotti/vestaglie/6145ae01643904aaca8ca322
 Content-Type: application/json
 
 ###
