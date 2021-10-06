@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 // the schema is the blueprint of our  model
-const ProductSchema = new Schema({
+const productSchema = new Schema({
   pic_src: { type: String },
   name: {
     type: String,
@@ -30,12 +30,12 @@ const ProductSchema = new Schema({
 
 //create the model out of the imported schema
 const collections = {
-  Vestaglie: mongoose.model('Vestaglie', ProductSchema),
-  Calze: mongoose.model('Calze', ProductSchema),
-  Intimo: mongoose.model('Intimo', ProductSchema),
-  Pigiami: mongoose.model('Pigiami', ProductSchema),
-  Maglie: mongoose.model('Maglie', ProductSchema),
-  Canottiere: mongoose.model('Canottiere', ProductSchema),
+  Vestaglie: mongoose.model('Vestaglie', productSchema),
+  Calze: mongoose.model('Calze', productSchema),
+  Intimo: mongoose.model('Intimo', productSchema),
+  Pigiami: mongoose.model('Pigiami', productSchema),
+  Maglie: mongoose.model('Maglie', productSchema),
+  Canottiere: mongoose.model('Canottiere', productSchema),
 };
 
 module.exports = collections;

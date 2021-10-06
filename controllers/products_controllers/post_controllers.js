@@ -1,6 +1,6 @@
-const collections = require('../model/ProductsModel');
-const defineCollection = require('../utils/defineCollection');
-const objHasEmptyKey = require('../utils/objHasEmptyKey');
+const collections = require('../../db/models/ProductsModel');
+const defineCollection = require('../../utils/defineCollection');
+const objHasEmptyKey = require('../../utils/objHasEmptyKey');
 
 //controller to insert a new document in the collection
 const insert_new_product = async (req, res, next) => {
@@ -38,4 +38,4 @@ const insert_new_product = async (req, res, next) => {
   }
 };
 
-module.exports = insert_new_product;
+module.exports = { insert_new_product };
