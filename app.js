@@ -1,14 +1,14 @@
 require('dotenv').config();
+require('./db/Client.js');
 const errorHandler = require('./middlewares/errorHandler');
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
-const client = require('./db/Client.js');
 const indexRouter = require('./routes/index');
 const productsRouter = require('./routes/productsRouter');
-
+const usersRouter = require('./routes/usersRouter');
 const app = express();
 
 //view engine setup
@@ -27,6 +27,7 @@ app.use('/public/images/', express.static(__dirname + '/public/images'));
 
 app.use('/', indexRouter);
 app.use('/prodotti', productsRouter);
+app.use('/users', usersRouter);
 app.use(errorHandler);
 
 module.exports = app;

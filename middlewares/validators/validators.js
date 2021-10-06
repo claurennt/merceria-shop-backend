@@ -1,4 +1,5 @@
 const { param, body } = require('express-validator');
+const validateError = require('./validatorError');
 
 //validate url params
 const validateGender = param('genere')
@@ -15,6 +16,16 @@ const validateCategory = param('categoria')
 
 const validateId = param('id')
   .exists()
-  .withMessage('Param "id"(ObjectId of product) is required');
+  .isLength({ min: 24, max: 24 })
+  .withMessage('Param "id"(ObjectId of product) is missing or incomplete.');
 
-module.exports = { validateCategory, validateGender, validateId };
+const paramsValidationChain = [validateGender, validateCategory, validateError];
+
+//copy and extend the validation chain with the id param validator
+const paramsValidationChainWithId = [
+  ...paramsValidationChain.slice(0, 1),
+  validateId,
+  ...paramsValidationChain.slice(1),
+];
+
+module.exports = { paramsValidationChain, paramsValidationChainWithId };

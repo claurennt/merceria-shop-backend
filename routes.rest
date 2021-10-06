@@ -6,11 +6,11 @@ Content-Type: application/json
 
 
 ###
-GET http://localhost:3000/prodotti/vestaglie/6145ae01643904aaca8ca322
+GET http://localhost:3000/prodotti/donna/intimo/6145af3914027edaeeea20a
 Content-Type: application/json
 
 ###
-DELETE http://localhost:3000/prodotti/donna/vestaglie
+DELETE http://localhost:3000/prodotti/donna/intimo/6145ae5452809d6a89533d09
 Content-Type: application/json
 
 ###
@@ -18,7 +18,7 @@ DELETE http://localhost:3000/prodotti/vestaglie/6140a559a2f95ea19a911871
 Content-Type: application/json
 
 ###
-PUT http://localhost:3000/prodotti/vestaglie/6140a559a2f95ea19a91186d
+PUT http://localhost:3000/prodotti/vestaglie/6145ae5452809d6a89533d09
 Content-Type: application/json
 
 {
