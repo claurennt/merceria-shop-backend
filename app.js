@@ -1,5 +1,5 @@
 require('dotenv').config();
-require('./db/Client.js');
+const { connectToDBClient } = require('./db/Clients.js');
 const errorHandler = require('./middlewares/errorHandler');
 const express = require('express');
 const path = require('path');
@@ -30,4 +30,5 @@ app.use('/prodotti', productsRouter);
 app.use('/users', usersRouter);
 app.use(errorHandler);
 
+global.clientConnection = connectToDBClient('prodotti');
 module.exports = app;
