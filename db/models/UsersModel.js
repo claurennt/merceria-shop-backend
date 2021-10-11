@@ -21,7 +21,7 @@ usersSchema.methods.createToken = () => {
   const { JWT_SECRET_KEY } = process.env;
 
   //signing a jwt with the data from the payload plus the jwt secret key
-  const token = jwt.sign(payload, secretKey);
+  const token = jwt.sign(payload, JWT_SECRET_KEY);
 
   return token;
 };
