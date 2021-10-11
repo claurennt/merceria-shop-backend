@@ -1,5 +1,6 @@
 require('dotenv').config();
-const { connectToDBClient } = require('./db/Clients.js');
+require('./db/Clients.js');
+const cors = require("cors");
 const errorHandler = require('./middlewares/errorHandler');
 const express = require('express');
 const path = require('path');
@@ -17,6 +18,11 @@ app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
 app.use(express.json());
+app.use(
+    cors({
+      exposedHeaders: "x-admin-authorization-token" && "x-user-authorization-token",
+    })
+  );
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
@@ -30,5 +36,5 @@ app.use('/prodotti', productsRouter);
 app.use('/users', usersRouter);
 app.use(errorHandler);
 
-global.clientConnection = connectToDBClient('prodotti');
+
 module.exports = app;

@@ -11,7 +11,7 @@ const connectToDBClient = (URI, dbName) => {
     console.log('error');
   });
   db.once('open', () => {
-    console.log('client MongoDB Connection ok!');
+    console.log(`client MongoDB Connection to ${dbName} DB ok!`);
   });
 
   return db;
