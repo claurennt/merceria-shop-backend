@@ -1,5 +1,5 @@
-const collections = require('../model/ProductsModel');
-const defineCollection = require('../utils/defineCollection');
+const collections = require('../../db/models/ProductsModel');
+const defineCollection = require('../../utils/defineCollection');
 
 const { validationResult } = require('express-validator');
 
