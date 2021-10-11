@@ -1,0 +1,40 @@
+
+###
+GET http://localhost:3001/prodotti/donna/intimo HTTP/1.1
+
+
+
+###
+GET http://localhost:3000/prodotti/donna/intimo/6145af3914027cedaeeea20a
+Content-Type: application/json
+
+###
+DELETE http://localhost:3000/prodotti/donna/intimo/6145ae5452809d6a89533d09
+Content-Type: application/json
+
+###
+DELETE http://localhost:3000/prodotti/vestaglie/6140a559a2f95ea19a911871
+Content-Type: application/json
+
+###
+PUT http://localhost:3000/prodotti/vestaglie/6145ae5452809d6a89533d09
+Content-Type: application/json
+
+{
+    "description": "test fn",
+    "ciao": "test &&&",
+    "test": "test"
+}
+
+###
+GET http://localhost:3000/users 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzM5ODQzMTh9.ae8a7YavskbHVuLiIBTDtMAM5Et8OkGLLz4NLqOmohI
+
+GET http://localhost:3000/users/register 
+Content-Type: application/json
+
+{
+    "email": "test",
+    "password":"test",
+    "role": "user"
+}
