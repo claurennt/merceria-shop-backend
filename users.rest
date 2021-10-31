@@ -1,0 +1,17 @@
+###
+POST http://localhost:3000/users/register
+Content-Type: application/json
+
+{
+    "email":"testuser1",
+    "password":"testuser1",
+    "role":"user"
+}
+
+
+###
+
+
+{
+    "role":"admin",
+}

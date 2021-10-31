@@ -148,3 +148,5 @@ $RECYCLE.BIN/
 *.lnk
 
 .vscode
+
+users.rest

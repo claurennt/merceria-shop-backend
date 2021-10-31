@@ -17,7 +17,7 @@ const create_new_user = async (req, res, next) => {
     //check how many users are admins
     const adminNr = await User.find({ role: "admin" }).count();
 
-    if (role === "admin" && adminNr >= 10)
+    if (role === "admin" && adminNr > 2)
       return res
         .status(400)
         .json({ message: "Unauthorized: You can only create a user profile." });

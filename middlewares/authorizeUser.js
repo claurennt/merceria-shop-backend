@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const { JWT_SECRET_KEY } = process.env;
 
-const authorizeUser = (req, res, next) => {
+const checkUserToken = (req, res, next) => {
   const authHeader = req.headers.authorization;
 
   if (!authHeader)
@@ -12,11 +12,11 @@ const authorizeUser = (req, res, next) => {
     const payload = jwt.verify(authToken, JWT_SECRET_KEY);
 
     req.user = payload;
-    console.log(payload);
+
     next();
   } catch (e) {
     next(e);
   }
 };
 
-module.exports = authorizeUser;
+module.exports = checkUserToken;

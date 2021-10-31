@@ -1,9 +1,9 @@
 const jwt = require("jsonwebtoken");
 const { JWT_ADMIN_KEY } = process.env;
 
-const authorizeAdmin = (req, res, next) => {
+const checkAdminToken = (req, res, next) => {
   const authHeader = req.headers.authorization;
-  console.log(authHeader);
+
   if (!authHeader)
     return res.status(401).send("Access denied. No token provided.");
 
@@ -19,4 +19,4 @@ const authorizeAdmin = (req, res, next) => {
   }
 };
 
-module.exports = authorizeAdmin;
+module.exports = checkAdminToken;
