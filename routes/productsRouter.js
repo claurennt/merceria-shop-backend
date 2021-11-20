@@ -36,7 +36,7 @@ productsRouter
 productsRouter
   .route(
     //use path-to-regexp module to limit the params
-    // '/:genere(donna|uomo|kids)/:categoria(maglie|intimo|canottiere|vestaglie|pigiami|calze)'
+    // '/:genere(donna|uomo|kids)/:categoria( one of maglie|intimo|canottiere|vestaglie|pigiami|calze)'
     '/:genere/:categoria/'
   )
   .delete(paramsValidationChain, delete_multiple_products)
