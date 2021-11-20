@@ -21,8 +21,8 @@ usersSchema.methods.createToken = function () {
 
   //retrieve the secret key for the signing
   const { JWT_SECRET_KEY, JWT_ADMIN_KEY } = process.env;
-  console.log(this.role);
-  //signing a jwt with the data from the payload plus the jwt secret key, differenciate by the user role
+
+  //signing a jwt with the data from the payload plus the jwt secret key, differenciate by user role
   const token =
     this.role === "admin"
       ? jwt.sign(payload, JWT_ADMIN_KEY)

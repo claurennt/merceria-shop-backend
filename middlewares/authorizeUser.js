@@ -1,13 +1,13 @@
-const jwt = require("jsonwebtoken");
+const jwt = require('jsonwebtoken');
 const { JWT_SECRET_KEY } = process.env;
 
 const checkUserToken = (req, res, next) => {
   const authHeader = req.headers.authorization;
 
   if (!authHeader)
-    return res.status(401).send("Access denied. No token provided.");
+    return res.status(401).send('Access denied. No token provided.');
 
-  const [_, authToken] = authHeader.split(" ");
+  const [_, authToken] = authHeader.split(' ');
   try {
     const payload = jwt.verify(authToken, JWT_SECRET_KEY);
 

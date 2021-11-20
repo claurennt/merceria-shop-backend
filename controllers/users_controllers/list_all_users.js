@@ -1,12 +1,10 @@
-const User = require("../../db/models/UsersModel");
+const User = require('../../db/models/UsersModel');
 
-const list_all_users = async (req, res, next) => {
-  try {
-    const users = await User.find({});
-
-    return res.status(200).json(users);
-  } catch (err) {
-    next(err);
-  }
+// eslint-disable-next-line consistent-return
+const list_all_users = async (req, res) => {
+  const users = await User.find({ role: 'user' });
+  return users
+    ? res.status(200).json(users)
+    : res.status(404).send('No users found');
 };
 module.exports = list_all_users;

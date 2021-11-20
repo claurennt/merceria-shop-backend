@@ -1,10 +1,12 @@
 const collections = require('../../db/models/ProductsModel');
+
 const defineCollection = require('../../utils/defineCollection');
 const objHasEmptyKey = require('../../utils/objHasEmptyKey');
 
-//controller to insert a new document in the collection
+// controller to insert a new document in the collection
+// eslint-disable-next-line consistent-return
 const insert_new_product = async (req, res, next) => {
-  //if the req.body has missing values notify the user and exit
+  // if the req.body has missing values notify the user and exit
   if (objHasEmptyKey(req.body) || !req.file) {
     return res
       .status(404)
@@ -16,23 +18,21 @@ const insert_new_product = async (req, res, next) => {
 
   const { destination, filename } = req.file;
 
-  //split destination path
+  // split destination path
   const imagePath = destination.split('.')[1];
 
-  console.log({ body: req.body, file: req.file });
-
   try {
-    //define the collection we are using based on the url param
+    // define the collection we are using based on the url param
     const Collection = defineCollection(category, collections);
 
-    //create the new product document in the collection with the req.body data
+    // create the new product document in the collection with the req.body data
     const newProduct = await Collection.create({
       ...req.body,
       pic_src: `${imagePath}/${filename}`,
     });
 
-    //send back the new added document
-    res.render('productOverview', { newProduct: newProduct });
+    // send back the new added document
+    res.render('productOverview', { newProduct });
   } catch (err) {
     next(err);
   }

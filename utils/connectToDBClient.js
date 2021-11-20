@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 //create helper function to connect to the database, for multiple connections
 const connectToDBClient = (URI, dbName) => {
@@ -7,11 +7,11 @@ const connectToDBClient = (URI, dbName) => {
     useUnifiedTopology: true,
   });
 
-  db.on('error', () => {
-    console.log('error');
+  db.on("error", () => {
+    console.log("error");
   });
-  db.once('open', () => {
-    console.log(`client MongoDB Connection to ${dbName} DB ok!`);
+  db.once("open", () => {
+    console.log(`client MongoDB Connection to ${dbName} DB successfull.`);
   });
 
   return db;
