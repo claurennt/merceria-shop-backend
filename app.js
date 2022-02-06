@@ -6,7 +6,7 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const helmet = require("helmet");
-var bodyParser = require("body-parser");
+const bodyParser = require("body-parser");
 const errorHandler = require("./middlewares/errorHandler");
 
 // routes
@@ -15,13 +15,10 @@ const productsRouter = require("./routes/productsRouter");
 const usersRouter = require("./routes/usersRouter");
 
 const app = express();
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // parse application/json
 app.use(bodyParser.json());
-// view engine setup
-app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "ejs");
 
 app.use(helmet());
 app.use(logger("dev"));
@@ -32,7 +29,9 @@ app.use(
       "x-admin-authorization-token" && "x-user-authorization-token",
   })
 );
-
+// view engine setup
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 

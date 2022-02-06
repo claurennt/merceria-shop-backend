@@ -29,9 +29,10 @@ const {
 const multerUpload = require("../middlewares/multer/multerUpload");
 
 //routes
+productsRouter.route("/aggiungi").get(display_upload_form);
+
 productsRouter
-  .route("/aggiungi/")
-  .get(display_upload_form)
+  .route(`/aggiungi`)
   .post(/*checkAdminToken*/ multerUpload, insert_new_product);
 
 productsRouter

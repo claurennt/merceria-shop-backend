@@ -5,11 +5,12 @@
   </head>
 
   <body class="add-main">
-    
+
     <h4>Aggiungi nuovo prodotto al database</h4>
     <form action="http://localhost:3000/prodotti/aggiungi" enctype="multipart/form-data" method="POST">
       <div class="form-group">
-      
+        <label for="token">Admin token</label>
+      <input type="password" name="token" required/>
         <div class="row">
           <label for="category">Seleziona la categoria:</label>
           <select name="category" id="category">

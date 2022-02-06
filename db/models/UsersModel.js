@@ -12,8 +12,8 @@ const usersSchema = new Schema({
   role: { type: String, enum: ["admin", "user"], select: false },
   purchase: [
     {
-      type: ObjectId,
-      ref: "Purchase",
+      // type: ObjectId,
+      // ref: "Purchase",
     },
   ],
 });
