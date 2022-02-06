@@ -34,6 +34,8 @@ app.use(
       "x-admin-authorization-token" && "x-user-authorization-token",
   })
 );
+
+app.get("/favicon.ico", (req, res) => res.status(204).send("no content"));
 app.use("/api", swaggerUi.serve);
 app.get("/api", swaggerUi.setup(swaggerDocument, options));
 
