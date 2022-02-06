@@ -1,7 +1,7 @@
-const collections = require('../../db/models/ProductsModel');
+const collections = require("../../db/models/ProductsModel");
 
-const defineCollection = require('../../utils/defineCollection');
-const objHasEmptyKey = require('../../utils/objHasEmptyKey');
+const defineCollection = require("../../utils/defineCollection");
+const objHasEmptyKey = require("../../utils/objHasEmptyKey");
 
 // controller to insert a new document in the collection
 // eslint-disable-next-line consistent-return
@@ -11,15 +11,16 @@ const insert_new_product = async (req, res, next) => {
     return res
       .status(404)
       .send(
-        'Bad Request: please provide values for all the following keys: pic_src, name, category, gender, brand, material, color, size, price, description.'
+        "Bad Request: please provide values for all the following keys: pic_src, name, category, gender, brand, material, color, size, price, description."
       );
   }
+  console.log("rr", req.body);
   const { category } = req.body;
 
   const { destination, filename } = req.file;
 
   // split destination path
-  const imagePath = destination.split('.')[1];
+  const imagePath = destination.split(".")[1];
 
   try {
     // define the collection we are using based on the url param
@@ -30,9 +31,10 @@ const insert_new_product = async (req, res, next) => {
       ...req.body,
       pic_src: `${imagePath}/${filename}`,
     });
-
+    console.log(req.body);
+    console.log(newProduct);
     // send back the new added document
-    res.render('productOverview', { newProduct });
+    res.render("productOverview", { newProduct });
   } catch (err) {
     next(err);
   }

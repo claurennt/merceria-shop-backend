@@ -1,22 +1,24 @@
 // here we create our schema and the  compile our schema into a model
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const { prodottiClient } = require('../Clients');
+const { merceriaClient } = require("../Clients");
+// here we create our schema and the  compile our schema into a model
+const User = require("./UsersModel");
 
 // the schema is the blueprint of our  model
 const productSchema = new Schema({
   pic_src: { type: String },
-  name: {
+  product_name: {
     type: String,
+    //required: true,
     uppercase: true,
-    required: true,
   },
   category: {
     type: String,
 
     required: true,
-    enum: ['calze', 'intimo', 'vestaglie', 'pigiami', 'maglie', 'canottiere'],
-    message: '{VALUE} is not a supported category.',
+    enum: ["calze", "intimo", "vestaglie", "pigiami", "maglie", "canottiere"],
+    message: "{VALUE} is not a supported category.",
   },
   gender: { type: String },
   brand: { type: String },
@@ -30,12 +32,12 @@ const productSchema = new Schema({
 
 //create the model out of the imported schema
 const collections = {
-  Vestaglie: prodottiClient.model('Vestaglie', productSchema),
-  Calze: prodottiClient.model('Calze', productSchema),
-  Intimo: prodottiClient.model('Intimo', productSchema),
-  Pigiami: prodottiClient.model('Pigiami', productSchema),
-  Maglie: prodottiClient.model('Maglie', productSchema),
-  Canottiere: prodottiClient.model('Canottiere', productSchema),
+  Vestaglie: merceriaClient.model("Vestaglie", productSchema),
+  Calze: merceriaClient.model("Calze", productSchema),
+  Intimo: merceriaClient.model("Intimo", productSchema),
+  Pigiami: merceriaClient.model("Pigiami", productSchema),
+  Maglie: merceriaClient.model("Maglie", productSchema),
+  Canottiere: merceriaClient.model("Canottiere", productSchema),
 };
 
 module.exports = collections;
