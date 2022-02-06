@@ -34,12 +34,10 @@ app.use(
       "x-admin-authorization-token" && "x-user-authorization-token",
   })
 );
-
+app.get("/", (req, res) => res.redirect("api"));
 app.get("/favicon.ico", (req, res) => res.status(204).send("no content"));
 app.use("/api", swaggerUi.serve);
 app.get("/api", swaggerUi.setup(swaggerDocument, options));
-
-app.get("/", (req, res) => res.redirect("api"));
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
