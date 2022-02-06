@@ -9,15 +9,7 @@
     <h4>Aggiungi nuovo prodotto al database</h4>
     <form action="http://localhost:3000/prodotti/aggiungi" enctype="multipart/form-data" method="POST">
       <div class="form-group">
-        <div class="row">
-          <label for="nome-prodotto">Nome del prodotto:</label>
-          <input
-            type="text"
-            placeholder="nome del prodotto"
-            name="name"
-            id="id-prodotto"
-          />
-        </div>
+      
         <div class="row">
           <label for="category">Seleziona la categoria:</label>
           <select name="category" id="category">
@@ -29,6 +21,13 @@
             <option value="canottiere">canottiere</option>
           </select>
         </div>
+        <label for="product_name">Nome del prodotto:</label>
+        <input
+          type="text"
+          placeholder="nome del prodotto"
+          name="product_name"
+          id="product_name"
+        />
         <div class="row">
           <p class="explanation">Seleziona il genere:</p>
           <input type="radio" id="donna" name="gender" value="donna" />

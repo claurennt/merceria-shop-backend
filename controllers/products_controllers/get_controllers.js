@@ -35,12 +35,19 @@ const get_one_product_by_id = async (req, res, next) => {
   try {
     // define the collection we are using based on the url param
     const Collection = defineCollection(categoria, collections);
-
+    console.log(Collection);
     // retrieve the item of a specific collection and gender by its id
     const product = await Collection.findOne({
       _id: id,
     });
+    Collection.findOne({ _id: id })
+      .populate({ path: 'customer', model: 'User' })
+      .exec(function (err, p) {
+        console.log(p);
 
+        console.log('The author is %s', err);
+        // prints "The author is Ian Fleming"
+      });
     // send an error if no item matches the params
     return !product
       ? res.status(404).send(`We could not find any product matching id:${id}`)

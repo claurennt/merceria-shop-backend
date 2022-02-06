@@ -1,13 +1,18 @@
-const mongoose = require('mongoose');
-const { connectToDBClient } = require('../utils/connectToDBClient');
+// connecting to multiple dbs
 
-const { MONGODB_URI_PRODOTTI, MONGODB_URI_USERS } = process.env;
+// //manage multiple connections  to database here
 
-//manage multiple connections  to database here
+// const prodottiClient = connectToDBClient(MONGODB_URI_PRODOTTI, 'prodotti');
 
-const prodottiClient = connectToDBClient(MONGODB_URI_PRODOTTI, 'prodotti');
+// const usersClient = connectToDBClient(MONGODB_URI_USERS, 'users');
 
-const usersClient = connectToDBClient(MONGODB_URI_USERS, 'users');
+// module.exports = { prodottiClient, usersClient };
 
+const mongoose = require("mongoose");
+const { connectToDBClient } = require("../utils/connectToDBClient");
 
-module.exports = { prodottiClient, usersClient };
+const { MONGODB_URI_MERCERIADB } = process.env;
+
+const merceriaClient = connectToDBClient(MONGODB_URI_MERCERIADB, "Merceria");
+
+module.exports = { merceriaClient };

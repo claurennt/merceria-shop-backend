@@ -1,8 +1,8 @@
 // here we create our schema and the  compile our schema into a model
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const { usersClient } = require("../Clients");
-
+const { merceriaClient } = require("../Clients");
+const Purchase = require("./PurchaseModel");
 const jwt = require("jsonwebtoken");
 
 // the schema is the blueprint of our  model
@@ -10,6 +10,12 @@ const usersSchema = new Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true, select: false },
   role: { type: String, enum: ["admin", "user"], select: false },
+  purchase: [
+    {
+      type: ObjectId,
+      ref: "Purchase",
+    },
+  ],
 });
 
 usersSchema.methods.createToken = function () {
@@ -31,6 +37,6 @@ usersSchema.methods.createToken = function () {
   return token;
 };
 //create the model out of the imported schema
-const User = usersClient.model("User", usersSchema);
+const User = merceriaClient.model("User", usersSchema);
 
 module.exports = User;
