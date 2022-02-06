@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www",
-    "macdev": "DEBUG=merceria-backend:* npm start",
+    "start": "node index.js",
+    "macdev": "DEBUG=merceria-backend:* nodemon ./bin/www",
     "windev": "set DEBUG=merceria-backend:* & npm start"
   },
   "dependencies": {
