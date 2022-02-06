@@ -8,9 +8,14 @@ const logger = require("morgan");
 const helmet = require("helmet");
 const bodyParser = require("body-parser");
 const errorHandler = require("./middlewares/errorHandler");
+const swaggerUi = require("swagger-ui-express");
+const swaggerDocument = require("./swagger.json");
+const options = {
+  customCss: ".swagger-ui .topbar { display: none }",
+};
 
 // routes
-const indexRouter = require("./routes/index");
+
 const productsRouter = require("./routes/productsRouter");
 const usersRouter = require("./routes/usersRouter");
 
@@ -29,10 +34,15 @@ app.use(
       "x-admin-authorization-token" && "x-user-authorization-token",
   })
 );
+app.use("/api", swaggerUi.serve);
+app.get("/api", swaggerUi.setup(swaggerDocument, options));
+
+app.get("/", (req, res) => res.redirect("api"));
+
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, "public")));
@@ -40,7 +50,6 @@ app.use(express.static(path.join(__dirname, "public")));
 //use this middleware to serve static files when the route is prefixed with /public
 app.use("/public/images/", express.static(__dirname + "/public/images"));
 
-app.use("/", indexRouter);
 app.use("/prodotti", productsRouter);
 app.use("/users", usersRouter);
 app.use(errorHandler);

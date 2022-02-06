@@ -29,10 +29,9 @@ const {
 const multerUpload = require("../middlewares/multer/multerUpload");
 
 //routes
-productsRouter.route("/aggiungi").get(display_upload_form);
-
 productsRouter
-  .route(`/aggiungi`)
+  .route("/aggiungi")
+  .get(display_upload_form)
   .post(/*checkAdminToken*/ multerUpload, insert_new_product);
 
 productsRouter
@@ -56,4 +55,5 @@ productsRouter
   .get(paramsValidationChainWithId, get_one_product_by_id)
   .put(paramsValidationChainWithId, checkAdminToken, update_product_by_id);
 
+// router.route("/purchase/confirm").post(save_purchase);
 module.exports = productsRouter;
