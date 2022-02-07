@@ -2,12 +2,14 @@
   "name": "merceria-backend",
   "version": "0.0.0",
   "private": true,
-  "engine":{
+  "engine": {
     "node": "16.13.1"
   },
   "scripts": {
-    "start": "nodemon ./bin/www",
-    "macdev": "DEBUG=merceria-backend:* npm start",
+    "postinstall": "npm run build",
+    "start": "node index.js",
+    "watch": "nodemon ./bin/www",
+    "macdev": "DEBUG=merceria-backend:* npm run watch",
     "windev": "set DEBUG=merceria-backend:* & npm start"
   },
   "dependencies": {
