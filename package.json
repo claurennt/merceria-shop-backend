@@ -2,7 +2,7 @@
   "name": "merceria-backend",
   "version": "0.0.0",
   "private": true,
-  "engine": {
+  "engines": {
     "node": "16.13.1"
   },
   "scripts": {
