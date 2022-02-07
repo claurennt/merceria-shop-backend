@@ -6,7 +6,6 @@
     "node": "16.13.1"
   },
   "scripts": {
-    "postinstall": "npm run build",
     "start": "node index.js",
     "watch": "nodemon ./bin/www",
     "macdev": "DEBUG=merceria-backend:* npm run watch",
